@@ -1,6 +1,6 @@
 # shed - the sh editor
 
-Don't run "curl | sh" again. Use "curl | shed" to verify scripts before running.
+Don't run `curl | sh` again. Use `curl | shed` to verify scripts before running.
 
 # Usage
 
@@ -41,6 +41,16 @@ and verify the contents before running:
 ```shell
 wget -q -O - https://fixubuntu.com/fixubuntu.sh | bashed
 ```
+
+# Config
+
+Set your preferred editor:
+
+```
+export SHED_EDITOR=vim
+```
+
+shed also checks `$EDITOR`, then falls back to `nano`, `vim`, `vi`, and `emacs` in order.
 
 # Contributions
 
