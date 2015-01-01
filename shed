@@ -68,6 +68,13 @@ def confirm_exec(filename):
 
 
 def main():
+    # Figure out if we're running as "shed" or "bashed"
+    my_name = os.path.basename(sys.argv[0])
+    if my_name == 'bashed':
+        shell = 'bash'
+    else:
+        shell = 'sh'
+
     # Save arguments to be added to sh later.
     # These change later in the script, so be careful!
     extra_args = sys.argv[1:]
@@ -87,10 +94,11 @@ def main():
         # Ask user for permission to execute modified script
         if confirm_exec(f.name):
             print()  # Pretty print spacing
-            # Call sh with any extra args passed to shed
-            args = ['sh']
+            # Call selected shell with any extra args passed to shed
+            args = [shell]
             args.extend(extra_args)
             args.append(f.name)
+            print(args)
             subprocess.call(args)
 
 

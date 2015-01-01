@@ -26,6 +26,18 @@ curl -L https://npmjs.org/install.sh | shed
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | shed
 ```
 
+Also works with bash: take this unknown script
+
+```shell
+wget -q -O - https://fixubuntu.com/fixubuntu.sh | bash
+```
+
+and verify the contents before running:
+
+```shell
+wget -q -O - https://fixubuntu.com/fixubuntu.sh | bashed
+```
+
 # Contributions
 
 Bug reports, fixes, or features? Feel free to open an issue or pull request any time. You can also tweet me at [@mplewis](http://twitter.com/mplewis) or email me at [matt@mplewis.com](mailto:matt@mplewis.com).
