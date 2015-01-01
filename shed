@@ -105,7 +105,6 @@ def main():
             args = [shell]
             args.extend(extra_args)
             args.append(f.name)
-            print(args)
             subprocess.call(args)
 
 
