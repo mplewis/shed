@@ -13,16 +13,14 @@ def default_editor():
     The user's preferred editor. Tries the env vars $SHED_EDITOR and $EDITOR.
     If those variables aren't set, tries nano, vim, vi, and emacs.
     """
-
+    EDITOR_VARIBLES = ('SHED_EDITOR', 'EDITOR')
     FALLBACK_EDITORS = ('nano', 'vim', 'vi', 'emacs')
-    try:
-        return os.environ['SHED_EDITOR']
-    except KeyError:
-        pass
-    try:
-        return os.environ['EDITOR']
-    except KeyError:
-        pass
+
+    for var in EDITOR_VARIBLES:
+        try:
+            return os.environ[var]
+        except KeyError:
+            pass
 
     for editor in FALLBACK_EDITORS:
         if which(editor):
