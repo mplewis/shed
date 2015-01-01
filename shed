@@ -68,8 +68,15 @@ def confirm_exec(filename):
 
 
 def main():
-    # Figure out if we're running as "shed" or "bashed"
+    # Print a helpful message if this looks like a user ran it standalone
     my_name = os.path.basename(sys.argv[0])
+    if sys.stdin.isatty():
+        print('Usage: curl -L https://example.com/some_script.sh | {}'
+              .format(my_name))
+        return
+
+    # Figure out if we're running as "shed" (sh) or "bashed" (bash).
+    # Use sh as the default shell.
     if my_name == 'bashed':
         shell = 'bash'
     else:
