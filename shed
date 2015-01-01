@@ -32,7 +32,14 @@ def default_editor():
 
 def open_editor(filename):
     """Opens the given file in the user's default editor."""
-    editor = default_editor()
+    try:
+        editor = default_editor()
+    except ValueError:
+        print()
+        print("Couldn't find a valid editor in $SHED_EDITOR or $EDITOR. "
+              "Try setting one:")
+        print('    export SHED_EDITOR=/path/to/my/editor')
+        sys.exit(-1)
     editor_split = shlex.split(editor)
     if len(editor_split) > 1:
         editor_split.append(filename)
