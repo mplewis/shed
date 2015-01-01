@@ -52,6 +52,7 @@ def confirm_exec(filename):
     yes = ('yes', 'y')
     no = ('no', 'n')
 
+    print()  # Pretty print spacing
     raw_resp = input('Do you still want to execute this script? [Y/n]: ')
 
     while True:
@@ -85,6 +86,7 @@ def main():
 
         # Ask user for permission to execute modified script
         if confirm_exec(f.name):
+            print()  # Pretty print spacing
             # Call sh with any extra args passed to shed
             args = ['sh']
             args.extend(extra_args)
