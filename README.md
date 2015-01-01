@@ -10,9 +10,11 @@ Replace `sh` with `shed` in any pipe-sh commands you run. shed will:
 * open the temp file in `$SHED_EDITOR` or `$EDITOR` to let you view and modify the script
 * ask you if you still want to run the script, preserving any changes you made
 
-# Example
+# Examples
 
-Take your questionable curl-pipe-sh or wget-pipe-sh command
+## Piping to sh
+
+Take your questionable **curl**-pipe-sh or **wget**-pipe-sh command
 
 ```shell
 curl -L https://npmjs.org/install.sh | sh
@@ -26,7 +28,9 @@ curl -L https://npmjs.org/install.sh | shed
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | shed
 ```
 
-Also works with bash: take this unknown script
+## Piping to bash
+
+bashed protects your **bash** shell, too: take this unknown script
 
 ```shell
 wget -q -O - https://fixubuntu.com/fixubuntu.sh | bash
