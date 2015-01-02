@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 
+"""
+shed v1.0.0
+
+Don't run "curl | sh" again.
+Use "curl | shed" to verify scripts before running.
+
+More info: http://github.com/mplewis/shed
+"""
+
 import sys
 import shlex
 import subprocess
