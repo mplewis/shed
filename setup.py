@@ -4,7 +4,7 @@ with open('README.rst') as f:
     long_description = f.read()
 
 setup(
-    name='shed-sh',
+    name='shed_sh',
     version='1.0.0',
     description=('Don\'t run "curl | sh" again. '
                  'Use "curl | shed" to verify scripts before running.'),

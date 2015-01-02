@@ -10,6 +10,18 @@ Replace `sh` with `shed` in any pipe-sh commands you run. shed will:
 * open the temp file in `$SHED_EDITOR` or `$EDITOR` to let you view and modify the script
 * ask you if you still want to run the script, preserving any changes you made
 
+# Installation
+
+This is a Python 3 script, so use `pip3` to install:
+
+```
+pip3 install shed_sh
+```
+
+**Note the spelling:** `shed_sh` is different from `shed`.
+
+After this, run `shed` or `bashed` from your terminal to verify it's installed properly.
+
 # Examples
 
 ## Piping to sh
