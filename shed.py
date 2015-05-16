@@ -79,9 +79,9 @@ def confirm_exec(filename):
         if resp in no:
             return False
         if not resp:
-            return True
+            return False
 
-        raw_resp = input('Please respond with "yes" or "no" [Y/n]: ')
+        raw_resp = input('Please respond with "yes" or "no" [y/N]: ')
 
 
 def main():
