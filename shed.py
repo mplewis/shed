@@ -23,7 +23,12 @@ def default_editor():
     If those variables aren't set, tries nano, vim, vi, and emacs.
     """
     EDITOR_VARIBLES = ('SHED_EDITOR', 'EDITOR')
-    FALLBACK_EDITORS = ('nano', 'vim', 'vi', 'emacs')
+    FALLBACK_EDITORS = ('sensible-editor',
+                        'editor',
+                        'nano',
+                        'vim',
+                        'vi',
+                        'emacs')
 
     for var in EDITOR_VARIBLES:
         if var in os.environ:
