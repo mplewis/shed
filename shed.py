@@ -26,10 +26,8 @@ def default_editor():
     FALLBACK_EDITORS = ('nano', 'vim', 'vi', 'emacs')
 
     for var in EDITOR_VARIBLES:
-        try:
+        if var in os.environ:
             return os.environ[var]
-        except KeyError:
-            pass
 
     for editor in FALLBACK_EDITORS:
         if which(editor):
