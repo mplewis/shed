@@ -22,19 +22,19 @@ def default_editor():
     The user's preferred editor. Tries the env vars $SHED_EDITOR and $EDITOR.
     If those variables aren't set, tries nano, vim, vi, and emacs.
     """
-    EDITOR_VARIBLES = ('SHED_EDITOR', 'EDITOR')
-    FALLBACK_EDITORS = ('sensible-editor',
+    editor_varibles = ('SHED_EDITOR', 'EDITOR')
+    fallback_editors = ('sensible-editor',
                         'editor',
                         'nano',
                         'vim',
                         'vi',
                         'emacs')
 
-    for var in EDITOR_VARIBLES:
+    for var in editor_varibles:
         if var in os.environ:
             return os.environ[var]
 
-    for editor in FALLBACK_EDITORS:
+    for editor in fallback_editors:
         if which(editor):
             return editor
 
@@ -60,23 +60,20 @@ def open_editor(filename):
         subprocess.check_call([editor, filename])
 
 
-def confirm_exec(filename):
+def confirm_exec():
     """
     Confirm the user still wants to execute the script.
     Returns True for yes, False for no. No response defaults to yes.
     """
-
-    yes = ('yes', 'y')
-    no = ('no', 'n')
 
     print()  # Pretty print spacing
     raw_resp = input('Do you still want to execute this script? [Y/n]: ')
 
     while True:
         resp = raw_resp.strip().lower()
-        if resp in yes:
+        if resp in 'yes':
             return True
-        if resp in no:
+        if resp in 'no':
             return False
         if not resp:
             return False
@@ -85,6 +82,7 @@ def confirm_exec(filename):
 
 
 def main():
+    """Reads the script from stdin, edit it and execute it."""
     # Print a helpful message if this looks like a user ran it standalone
     my_name = os.path.basename(sys.argv[0])
     if sys.stdin.isatty():
@@ -110,18 +108,18 @@ def main():
     os.dup2(tty.fileno(), 0)
 
     # Create a temp file to hold our piped script
-    with NamedTemporaryFile() as f:
-        f.write(script.encode('utf-8'))
-        f.flush()
-        open_editor(f.name)
+    with NamedTemporaryFile() as temp:
+        temp.write(script.encode('utf-8'))
+        temp.flush()
+        open_editor(temp.name)
 
         # Ask user for permission to execute modified script
-        if confirm_exec(f.name):
+        if confirm_exec():
             print()  # Pretty print spacing
             # Call selected shell with any extra args passed to shed
             args = [shell]
             args.extend(extra_args)
-            args.append(f.name)
+            args.append(temp.name)
             subprocess.call(args)
 
 
