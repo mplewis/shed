@@ -64,6 +64,14 @@ export SHED_EDITOR=vim
 
 shed also checks `$EDITOR`, then falls back to `nano`, `vim`, `vi`, and `emacs` in order.
 
+# Alternatives
+
+Python is probably overkill for something like this. I wrote this as a learning exercise, but there are definitely more concise ways to accomplish this goal.
+
+@sunaku wrote a [short shell script](https://gist.github.com/sunaku/f5f79e20b6f92ab1e524) that does the exact same thing.
+
+@christianbundy suggests using [vipe](http://linux.die.net/man/1/vipe): `curl -L https://npmjs.org/install.sh | vipe | sh`
+
 # Contributions
 
 Bug reports, fixes, or features? Feel free to open an issue or pull request any time. You can also tweet me at [@mplewis](http://twitter.com/mplewis) or email me at [matt@mplewis.com](mailto:matt@mplewis.com).
