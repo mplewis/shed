@@ -20,7 +20,8 @@ from tempfile import NamedTemporaryFile
 def default_editor():
     """
     The user's preferred editor. Tries the env vars $SHED_EDITOR and $EDITOR.
-    If those variables aren't set, tries nano, vim, vi, and emacs.
+    If those variables aren't set, tries sensible-editor, editor, nano, vim,
+    vi, and emacs.
     """
     editor_varibles = ('SHED_EDITOR', 'EDITOR')
     fallback_editors = ('sensible-editor',
@@ -71,13 +72,12 @@ def confirm_exec():
 
     while True:
         resp = raw_resp.strip().lower()
-        if resp in 'yes':
-            return True
-        if resp in 'no':
-            return False
         if not resp:
             return False
-
+        if 'yes'.startswith(resp):
+            return True
+        if 'no'.startswith(resp):
+            return False
         raw_resp = input('Please respond with "yes" or "no" [y/N]: ')
 
 
